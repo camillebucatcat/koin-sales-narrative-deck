@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+}
+
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+}
+.section:nth-child(even) {
+  background-color: lightblue;
+}
+.section:nth-child(odd) {
+  background-color: lightgreen;
+}
+
+.section-container {
+  height: auto;
+  background-color: crimson;
+}
+.section-container .section {
+  background: transparent !important;
+}
+
+/*# sourceMappingURL=main.css.map */

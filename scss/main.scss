@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+}
+
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+
+  &:nth-child(even) {
+    background-color: lightblue;
+  }
+
+  &:nth-child(odd) {
+    background-color: lightgreen;
+  }
+}
+
+.section-container {
+  height: auto;
+  background-color: crimson;
+
+  .section {
+    background: transparent !important;
+  }
+}
