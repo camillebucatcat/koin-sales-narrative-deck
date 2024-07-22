@@ -1,5 +1,10 @@
+@font-face {
+  font-family: 'Aventa';
+  src: url('../fonts/Aventa/Aventa-Medium.otf');
+}
 body {
   margin: 0;
+  font-family: 'Aventa', sans-serif;
 }
 
 .section {
@@ -8,6 +13,7 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 3em;
+  color: white;
 
   &:nth-child(even) {
     background-color: lightblue;
@@ -25,4 +31,29 @@ body {
   .section {
     background: transparent !important;
   }
+}
+.hidden-text {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.show-text {
+  opacity: 1 !important;
+}
+.text-center{
+  text-align: center;
+}
+.block{
+  display: block;
+}
+.grid{
+  display: grid;
+}
+.end{
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+}
+.top{
+  display: flex;
+  align-self: flex-start;
 }
