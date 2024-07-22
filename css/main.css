@@ -38,5 +38,22 @@ h1{
 .show-text {
   opacity: 1 !important;
 }
-
+.text-center{
+  text-align: center;
+}
+.block{
+  display: block;
+}
+.grid{
+  display: grid;
+}
+.end{
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+}
+.top{
+  display: flex;
+  align-self: flex-start;
+}
 /*# sourceMappingURL=main.css.map */
