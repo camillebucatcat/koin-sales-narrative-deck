@@ -7,20 +7,41 @@
   <title>Full Page Scroll</title>
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/aos.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
 
 <body>
 
   <section class="section-container">
     <div class="section">
-      <h1 data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">Let's level set:</h1>
+      <h1 data-aos="fade-left" data-aos-offset="200" data-aos-delay="50">Let's level set:</h1>
     </div>
-    <div class="section">
-      <h1 data-aos="fade-up" data-aos-offset="200" data-aos-delay="50">You want patrons to spend more time gaming.</h1>
+    <div class="section" style="display: grid; text-align:center;">
+      <h1 data-aos="fade-left" data-aos-offset="200" data-aos-delay="100" style="max-width: 62.5rem;">You want patrons to spend more time gaming.</h1>
+      <div>
+        <h1 data-aos="fade-up" data-aos-delay="700">Period.</h1>
+      </div>
     </div>
   </section>
-  <section class="section">Section 2</section>
-  <section class="section">Section 3</section>
+  <section class="section-container">
+    <div class="section">
+      <h1 data-aos="fade-left" data-aos-delay="100" class="" >The answer is <span style="color: #6EDEB0;">cashless.</span></h1>
+    </div>
+    <div class="section" style="display: block; text-align: center;">
+      <h1 class="">The answer is <span style="color: #6EDEB0;">cashless.</span></h1>
+      <div>
+        <h1 data-aos="fade-up" data-aos-delay="700" style="max-width: 1300px; margin: auto;" id="second-text" class="hidden-text">41% of Americans say they make NONE of their typical weekly purchases with actual cash.</h1>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div>
+      <h1><span data-aos="fade-up" data-aos-anchor-placement="top-bottom">But. </span><span data-aos="fade-up"  data-aos-anchor-placement="top-bottom" data-aos-delay="500">But. </span><span data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="800">But, </span><span data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="1000">what </span><span data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-delay="1300">about...</span></h1>
+    </div>
+  </section>
 
 
 
@@ -29,6 +50,33 @@
    <script src="js/aos.js"></script>
   <script src="js/page-scroll.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    function isElementInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+
+    function handleScroll() {
+      const firstText = document.querySelector('[data-aos="fade-up"]');
+      const secondText = document.getElementById('second-text');
+      
+      if (isElementInViewport(firstText)) {
+        setTimeout(() => {
+          if (isElementInViewport(firstText)) {
+            secondText.classList.add('show-text');
+          }
+        }, 1000); 
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); 
+  </script>
 </body>
 
 </html>

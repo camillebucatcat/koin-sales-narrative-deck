@@ -1,5 +1,10 @@
+@font-face {
+  font-family: 'Aventa';
+  src: url('../fonts/Aventa/Aventa-Regular.otf');
+}
 body {
   margin: 0;
+  font-family: 'Aventa', sans-serif;
 }
 
 .section {
@@ -22,6 +27,16 @@ body {
 }
 .section-container .section {
   background: transparent !important;
+}
+h1{
+  color: white;
+}
+.hidden-text {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.show-text {
+  opacity: 1 !important;
 }
 
 /*# sourceMappingURL=main.css.map */
