@@ -7,12 +7,13 @@
   <title>Full Page Scroll</title>
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/aos.css" />
+  <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
 </head>
 
 <body>
   <nav>
     <ul id="nav">
-      <li class="nav-item"><a href="#" class="">
+      <li class="nav-item" id="show-video"><a href="#level" class="">
         <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M31.3047 8.5625C30.761 8.5625 30.3203 9.00324 30.3203 9.54687C30.3203 10.0905 30.761 10.5312 31.3047 10.5312H33.2734C33.8171 10.5312 34.2578 10.0905 34.2578 9.54687C34.2578 9.00324 33.8171 8.5625 33.2734 8.5625H31.3047Z" fill="#A182ED"/>
           <path d="M31.1408 6.13385L32.8457 5.14948C33.3165 4.87766 33.4778 4.27562 33.206 3.80482C32.9342 3.33403 32.3321 3.17272 31.8613 3.44454L30.1564 4.42892C29.6856 4.70074 29.5243 5.30278 29.7961 5.77357C30.0679 6.24437 30.67 6.40567 31.1408 6.13385Z" fill="#A182ED"/>
@@ -224,6 +225,20 @@
       </svg>    
   </div>
 </section>
+<section id="level" class="video-container">
+  <video
+    id="my-video"
+    class="video-js"
+    controls
+    preload="auto"
+    autoplay
+    loop
+    muted
+    data-setup="{}"
+  >
+    <source src="/videos/level-set.mp4" type="video/mp4" />
+  </video>
+</section>
 
   <!-- script -->
    <script src="js/jquery-3.7.1.min.js"></script>
@@ -231,6 +246,22 @@
   <!-- <script src="js/page-scroll.js"></script> -->
   <script src="js/button.js"></script>
   <script src="js/main.js"></script>
+  <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const videoSection = document.getElementById('level');
+      const showVideoButton = document.getElementById('show-video');
+      const logoSection = document.querySelector('.logo');
+      const video = document.getElementById('my-video');
+
+      showVideoButton.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent default anchor behavior
+        videoSection.style.display = 'block';
+        logoSection.classList.add('hide');
+        video.play();
+      });
+    });
+  </script>
 </body>
 
 </html>
