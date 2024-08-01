@@ -21,11 +21,15 @@ body {
   height: 100vh;
   align-items: center;
 }
+nav{
+  display: flex;
+  justify-content: center;
+}
 #nav {
   position: absolute;
   display: flex;
   bottom: 30px;
-  width: -webkit-fill-available;
+  min-width: 1170px;
   justify-content: space-around;
   padding-left: 0;
   z-index: 1000;
