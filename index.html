@@ -13,14 +13,16 @@
 <body>
   <nav>
     <ul id="nav">
-      <li class="nav-item" id="show-video">
+      <li class="nav-item" id="show-video-1">
         <a href="#level" class="">
           <img src="./images/img1.svg" alt="">
         </a>
       </li>
-    <li class="nav-item"><a href="#" class="">
-      <img src="./images/img2.svg" alt="">
-    </a></li>
+      <li class="nav-item" id="show-video-2">
+        <a href="#cashless" class="">
+          <img src="./images/img2.svg" alt="">
+        </a>
+      </li>
     <li class="nav-item"><a href="#" class="">
       <img src="./images/img3.svg" alt="">  
     </a></li>
@@ -63,7 +65,7 @@
   </section>
   <section id="level" class="video-container fade hidden">
     <video
-      id="my-video"
+      id="my-video-1"
       class="video-js"
       preload="auto"
       autoplay
@@ -74,7 +76,19 @@
       <source src="./videos/level-set.mp4" type="video/mp4" />
     </video>
   </section>
-
+  <section id="cashless" class="video-container fade hidden">
+    <video
+      id="my-video-2"
+      class="video-js"
+      preload="auto"
+      autoplay
+      loop
+      muted
+      data-setup="{}"
+    >
+      <source src="./videos/the-answer-is-cashless.mp4" type="video/mp4" />
+    </video>
+  </section>
   <!-- script -->
    <script src="js/jquery-3.7.1.min.js"></script>
    <script src="js/aos.js"></script>
@@ -84,37 +98,54 @@
   <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const videoSection = document.getElementById('level');
-      const showVideoButton = document.getElementById('show-video');
-      const logoSection = document.querySelector('.logo');
-      const video = document.getElementById('my-video');
-
-      let isVideoVisible = false;
-
-      showVideoButton.addEventListener('click', (event) => {
-        event.preventDefault();
-
-        if (isVideoVisible) {
-          videoSection.classList.add('hidden');
-          videoSection.classList.remove('visible');
-          logoSection.classList.add('visible');
-          logoSection.classList.remove('hidden');
-          setTimeout(() => {
-            videoSection.style.display = 'none';
-            logoSection.style.display = 'flex';
-          }, 500);
-          video.pause();
-        } else {
-          videoSection.style.display = 'block';
-          logoSection.style.display = 'none';
-          setTimeout(() => {
-            videoSection.classList.add('visible');
-            videoSection.classList.remove('hidden');
-          }, 10);
-          video.play();
+      const sections = {
+        logo: document.querySelector('.logo'),
+        level: {
+          button: document.getElementById('show-video-1'),
+          section: document.getElementById('level'),
+          video: document.getElementById('my-video-1')
+        },
+        cashless: {
+          button: document.getElementById('show-video-2'),
+          section: document.getElementById('cashless'),
+          video: document.getElementById('my-video-2')
         }
+      };
 
-        isVideoVisible = !isVideoVisible;
+      const handleClick = (currentSection) => {
+        if (currentSection.section.classList.contains('visible')) {
+          currentSection.section.classList.remove('visible');
+          currentSection.section.classList.add('hidden');
+          sections.logo.classList.remove('hidden');
+          sections.logo.classList.add('visible');
+          setTimeout(() => {
+            currentSection.section.style.display = 'none';
+            sections.logo.style.display = 'flex';
+          }, 300);
+          currentSection.video.pause();
+        } else {
+          sections.logo.classList.remove('visible');
+          sections.logo.classList.add('hidden');
+          setTimeout(() => {
+            sections.logo.style.display = 'none';
+            currentSection.section.style.display = 'block';
+            setTimeout(() => {
+              currentSection.section.classList.remove('hidden');
+              currentSection.section.classList.add('visible');
+            }, 10);
+          }, 300);
+          currentSection.video.play();
+        }
+      };
+
+      sections.level.button.addEventListener('click', (event) => {
+        event.preventDefault();
+        handleClick(sections.level);
+      });
+
+      sections.cashless.button.addEventListener('click', (event) => {
+        event.preventDefault();
+        handleClick(sections.cashless);
       });
     });
   </script>
