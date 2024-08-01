@@ -46,11 +46,23 @@ nav{
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: transform 1s ease, opacity 1s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  opacity: 1;
+  visibility: visible;
 }
 
 .nav-item a {
   text-decoration: none;
+}
+
+.nav-item.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.nav-item.visible {
+  opacity: 1;
+  visibility: visible;
 }
 
 .hidden {

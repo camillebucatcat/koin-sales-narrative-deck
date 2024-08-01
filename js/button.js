@@ -1,35 +1,19 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const navItems = document.querySelectorAll('.nav-item');
-  let lastClickedItem = null;
+$(document).ready(function() {
+    const $navItems = $('.nav-item');
+    let lastClickedItem = null;
 
-  navItems.forEach(item => {
-      item.addEventListener('click', () => {
-          const firstItem = document.querySelector('.nav-item');
-          const firstItemRect = firstItem.getBoundingClientRect();
+    const handleClick = ($item) => {
+        if (lastClickedItem && lastClickedItem !== $item[0]) {
+            $(lastClickedItem).removeClass('visible').addClass('hidden');
+        }
 
-          if (lastClickedItem === item) {
-              // Clicking the same item again
-              navItems.forEach(nav => {
-                  nav.classList.remove('hidden');
-                  nav.style.transform = '';
-                  nav.classList.remove('moved');
-              });
-              lastClickedItem = null;
-          } else {
-              const itemRect = item.getBoundingClientRect();
-              const translateX = firstItemRect.left - itemRect.left;
-              const translateY = firstItemRect.top - itemRect.top;
+        $item.removeClass('hidden').addClass('visible');
 
-              navItems.forEach(nav => {
-                  if (nav !== item) {
-                      nav.classList.add('hidden');
-                  } else {
-                      nav.classList.add('moved');
-                      nav.style.transform = `translate(${translateX}px, ${translateY}px)`;
-                  }
-              });
-              lastClickedItem = item;
-          }
-      });
-  });
+        lastClickedItem = $item[0];
+    };
+    $navItems.on('click', function() {
+        const $item = $(this);
+        handleClick($item);
+    });
+    $navItems.removeClass('hidden').addClass('visible');
 });
