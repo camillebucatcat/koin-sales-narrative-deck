@@ -29,7 +29,8 @@ nav{
   position: absolute;
   display: flex;
   bottom: 30px;
-  min-width: 1170px;
+  max-width: 73.125rem;
+  gap: 1.125rem;
   justify-content: space-around;
   padding-left: 0;
   z-index: 1000;
@@ -55,6 +56,11 @@ nav{
 .hidden {
   opacity: 0;
   pointer-events: none;
+  visibility: hidden;
+}
+.visible {
+  opacity: 1;
+  visibility: visible;
 }
 
 .moved {
@@ -78,5 +84,17 @@ nav{
 .video-js {
   width: 100%;
   height: 100vh;
+}
+#level {
+  display: none;
+}
+.fade {
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+.fade.visible {
+  opacity: 1;
+  visibility: visible;
 }
 
