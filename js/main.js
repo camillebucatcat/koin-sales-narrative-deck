@@ -25,22 +25,22 @@ const sections = {
   level: {
     button: $('#show-video-1'),
     section: $('#level'),
-    video: videojs('#my-video-1') // Initialize Video.js instance
+    video: videojs('#my-video-1') 
   },
   cashless: {
     button: $('#show-video-2'),
     section: $('#cashless'),
-    video: videojs('#my-video-2') // Initialize Video.js instance
+    video: videojs('#my-video-2') 
   },
   koinintro: {
     button: $('#show-video-3'),
     section: $('#koinintro'),
-    video: videojs('#my-video-3') // Initialize Video.js instance
+    video: videojs('#my-video-3') 
   },
   gamechanger: {
     button: $('#show-video-4'),
     section: $('#gamechanger'),
-    video: videojs('#my-video-4') // Initialize Video.js instance
+    video: videojs('#my-video-4') 
   }
 };
 
@@ -53,7 +53,7 @@ const handleClick = (currentSection) => {
       currentVisibleSection.section.hide();
     }, 300);
     if (currentVisibleSection.video) {
-      currentVisibleSection.video.pause(); // Use Video.js instance to pause
+      currentVisibleSection.video.pause();
     }
   }
 
@@ -67,12 +67,12 @@ const handleClick = (currentSection) => {
       }, 10);
     }, 300);
     if (currentSection.video) {
-      currentSection.video.play(); // Use Video.js instance to play
+      currentSection.video.play(); 
     }
     currentVisibleSection = currentSection;
   } else {
     if (currentSection.video) {
-      currentSection.video.play(); // Use Video.js instance to play
+      currentSection.video.play();
     }
   }
 };
