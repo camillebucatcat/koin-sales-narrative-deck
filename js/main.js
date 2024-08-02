@@ -23,24 +23,24 @@ $(document).ready(function () {
 const sections = {
   logo: $('.logo'),
   level: {
-      button: $('#show-video-1'),
-      section: $('#level'),
-      video: document.getElementById('my-video-1')
+    button: $('#show-video-1'),
+    section: $('#level'),
+    video: videojs('#my-video-1') // Initialize Video.js instance
   },
   cashless: {
-      button: $('#show-video-2'),
-      section: $('#cashless'),
-      video: document.getElementById('my-video-2') 
+    button: $('#show-video-2'),
+    section: $('#cashless'),
+    video: videojs('#my-video-2') // Initialize Video.js instance
   },
   koinintro: {
-      button: $('#show-video-3'),
-      section: $('#koinintro'),
-      video: document.getElementById('my-video-3') 
+    button: $('#show-video-3'),
+    section: $('#koinintro'),
+    video: videojs('#my-video-3') // Initialize Video.js instance
   },
   gamechanger: {
-      button: $('#show-video-4'),
-      section: $('#gamechanger'),
-      video: document.getElementById('my-video-4') 
+    button: $('#show-video-4'),
+    section: $('#gamechanger'),
+    video: videojs('#my-video-4') // Initialize Video.js instance
   }
 };
 
@@ -48,51 +48,51 @@ let currentVisibleSection = null;
 
 const handleClick = (currentSection) => {
   if (currentVisibleSection && currentVisibleSection !== currentSection) {
-      currentVisibleSection.section.removeClass('visible').addClass('hidden');
-      setTimeout(() => {
-          currentVisibleSection.section.hide();
-      }, 300);
-      if (currentVisibleSection.video && currentVisibleSection.video instanceof HTMLVideoElement) {
-          currentVisibleSection.video.pause();
-      }
+    currentVisibleSection.section.removeClass('visible').addClass('hidden');
+    setTimeout(() => {
+      currentVisibleSection.section.hide();
+    }, 300);
+    if (currentVisibleSection.video) {
+      currentVisibleSection.video.pause(); // Use Video.js instance to pause
+    }
   }
 
   if (!currentSection.section.hasClass('visible')) {
-      sections.logo.removeClass('visible').addClass('hidden');
+    sections.logo.removeClass('visible').addClass('hidden');
+    setTimeout(() => {
+      sections.logo.hide();
+      currentSection.section.show();
       setTimeout(() => {
-          sections.logo.hide();
-          currentSection.section.show();
-          setTimeout(() => {
-              currentSection.section.removeClass('hidden').addClass('visible');
-          }, 10);
-      }, 300);
-      if (currentSection.video && currentSection.video instanceof HTMLVideoElement) {
-          currentSection.video.play(); 
-      }
-      currentVisibleSection = currentSection;
+        currentSection.section.removeClass('hidden').addClass('visible');
+      }, 10);
+    }, 300);
+    if (currentSection.video) {
+      currentSection.video.play(); // Use Video.js instance to play
+    }
+    currentVisibleSection = currentSection;
   } else {
-      if (currentSection.video && currentSection.video instanceof HTMLVideoElement) {
-          currentSection.video.play();
-      }
+    if (currentSection.video) {
+      currentSection.video.play(); // Use Video.js instance to play
+    }
   }
 };
 
-sections.level.button.on('click', function(event) {
+sections.level.button.on('click', function (event) {
   event.preventDefault();
   handleClick(sections.level);
 });
 
-sections.cashless.button.on('click', function(event) {
+sections.cashless.button.on('click', function (event) {
   event.preventDefault();
   handleClick(sections.cashless);
 });
 
-sections.koinintro.button.on('click', function(event) {
+sections.koinintro.button.on('click', function (event) {
   event.preventDefault();
   handleClick(sections.koinintro);
 });
 
-sections.gamechanger.button.on('click', function(event) {
+sections.gamechanger.button.on('click', function (event) {
   event.preventDefault();
   handleClick(sections.gamechanger);
 });
