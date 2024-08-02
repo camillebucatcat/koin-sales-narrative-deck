@@ -1,14 +1,41 @@
 $(document).ready(function() {
     const $navItems = $('.nav-item');
+    
+    let lastClickedItem = null;
 
-    const handleClick = ($item) => {
-        $item.removeClass('hidden').addClass('visible');
-    };
-
-    $navItems.on('click', function() {
+    $navItems.each(function() {
         const $item = $(this);
-        handleClick($item);
-    });
+        
+        $item.on('click', function() {
+            const $firstItem = $('.nav-item').first();
+            
+            const firstItemRect = $firstItem[0].getBoundingClientRect();
 
-    $navItems.removeClass('hidden').addClass('visible');
+            if (lastClickedItem && lastClickedItem[0] === this) {
+                $navItems.each(function() {
+                    const $nav = $(this);
+                    $nav.removeClass('hidden');
+                    $nav.css('transform', '');
+                    $nav.removeClass('moved');
+                });
+                lastClickedItem = null;
+            } else {
+                const itemRect = this.getBoundingClientRect();
+                
+                const translateX = firstItemRect.left - itemRect.left;
+                const translateY = firstItemRect.top - itemRect.top;
+
+                $navItems.each(function() {
+                    const $nav = $(this);
+                    if ($nav[0] !== $item[0]) {
+                        $nav.addClass('hidden');
+                    } else {
+                        $nav.addClass('moved');
+                        $nav.css('transform', `translate(${translateX}px, ${translateY}px)`);
+                    }
+                });
+                lastClickedItem = $item;
+            }
+        });
+    });
 });

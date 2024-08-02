@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Full Page Scroll</title>
+  <title>Koin Sales Narrative Deck</title>
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/aos.css" />
   <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
@@ -28,9 +28,11 @@
       <img src="./images/img3.svg" alt="">  
       </a>
     </li>
-    <li class="nav-item"><a href="#" class="">
+    <li class="nav-item" id="show-video-4">
+      <a href="#gamechanger" class="">
       <img src="./images/img4.svg" alt="">       
-    </a></li>
+      </a>
+    </li>
     <li class="nav-item"><a href="#" class="">
       <img src="./images/img5.svg" alt="">                     
     </a></li>
@@ -62,7 +64,7 @@
   </nav>
   <section>
     <div class="logo fade visible">
-      <img src="./images/logo.svg" alt="">
+      <img src="./images/logo.svg" data-aos="fade-down">
     </div>
   </section>
   <section id="level" class="video-container fade hidden">
@@ -101,6 +103,18 @@
       <source src="./videos/introducing-koin.mp4" type="video/mp4" />
     </video>
   </section>
+  <section id="gamechanger" class="video-container fade hidden">
+    <video
+      id="my-video-4"
+      class="video-js"
+      preload="auto"
+      autoplay
+      muted
+      data-setup="{}"
+    >
+      <source src="./videos/a-game-changer.mp4" type="video/mp4" />
+    </video>
+  </section>
   <!-- script -->
    <script src="js/jquery-3.7.1.min.js"></script>
    <script src="js/aos.js"></script>
@@ -109,73 +123,7 @@
   <script src="js/main.js"></script>
   <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
   <script>
-    $(document).ready(function() {
-      const sections = {
-        logo: $('.logo'),
-        level: {
-          button: $('#show-video-1'),
-          section: $('#level'),
-          video: $('#my-video-1')
-        },
-        cashless: {
-          button: $('#show-video-2'),
-          section: $('#cashless'),
-          video: $('#my-video-2')
-        },
-        koinintro: {
-          button: $('#show-video-3'),
-          section: $('#koinintro'),
-          video: $('#my-video-3')
-        }
-      };
-
-      let currentVisibleSection = null;
-      let lastClickedItem = null;
-
-      const handleClick = (currentSection, $item) => {
-        if (currentVisibleSection && currentVisibleSection !== currentSection) {
-          currentVisibleSection.section.removeClass('visible').addClass('hidden');
-          setTimeout(() => {
-            currentVisibleSection.section.hide();
-          }, 300);
-          currentVisibleSection.video[0].pause();
-        }
-
-        if (!currentSection.section.hasClass('visible')) {
-          sections.logo.removeClass('visible').addClass('hidden');
-          setTimeout(() => {
-            sections.logo.hide();
-            currentSection.section.show();
-            setTimeout(() => {
-              currentSection.section.removeClass('hidden').addClass('visible');
-            }, 10);
-          }, 300);
-          currentSection.video[0].play();
-          currentVisibleSection = currentSection;
-        }
-
-        if (lastClickedItem) {
-          lastClickedItem.removeClass('hidden');
-        }
-        $item.addClass('hidden');
-        lastClickedItem = $item;
-      };
-
-      sections.level.button.on('click', function(event) {
-        event.preventDefault();
-        handleClick(sections.level, $(this));
-      });
-
-      sections.cashless.button.on('click', function(event) {
-        event.preventDefault();
-        handleClick(sections.cashless, $(this));
-      });
-
-      sections.koinintro.button.on('click', function(event) {
-        event.preventDefault();
-        handleClick(sections.koinintro, $(this));
-      });
-    });
+    
   </script>
 </body>
 
