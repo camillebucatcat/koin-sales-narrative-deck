@@ -8,14 +8,11 @@ $(document).ready(function () {
 
     $('section').addClass('hide').removeClass('show').not(currentSection);
     currentSection.addClass('show').removeClass('hide');
-
     $('section.hide video').each(function(){
       this.pause();
       this.currentTime = 0;
     });
     currentVideo.play();
-
-
 
   });
 });
