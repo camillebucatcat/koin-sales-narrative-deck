@@ -1,20 +1,20 @@
 $(document).ready(function () {
   AOS.init();
 
-  // const myFullPageWithFadeIn = fullPageWithFadeIn({
-  //   sectionSelector: '.section',
-  //   scrollDuration: 1000,
-  //   easingFunction: 'easeInOutCubic',
-  //   // fadeInDuration: 500 // Adjust fade-in duration as needed
-  // });
+  $('.nav-item').click(function () {
+    var id = $(this).attr('id');
+    var currentSection = $('#section'+id);
+    var currentVideo =  videojs('#video'+id);
 
-  // myFullPageWithFadeIn.init();
+    $('section').addClass('hide').removeClass('show').not(currentSection);
+    currentSection.addClass('show').removeClass('hide');
+    $('section.hide video').each(function(){
+      this.pause();
+      this.currentTime = 0;
+    });
+    currentVideo.play();
 
-  const myFullPageWithOverscrollStop = fullPageWithOverscrollStop({
-    sectionSelector: '.section',
-    scrollDuration: 1000,
-    easingFunction: 'easeInOutCubic'
   });
-
-  myFullPageWithOverscrollStop.init();
 });
+
+
