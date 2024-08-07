@@ -171,5 +171,38 @@ nav {
     transform: rotate(1turn);
   }
 }
+.btn {
+  background: #533D8A;
+  padding: 1.25rem 1.375rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.index-sec {
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: 900;
+  font-size: 1.875rem;
+  text-align: center;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  margin-bottom: 2.8125rem;
+}
+
+.btn {
+  min-width: 22.75rem;
+  color: #ffffff;
+  margin-bottom: 1.5625rem;
+  font-weight: 600;
+  border: none;
+  text-decoration: none;
+}
 
 /*# sourceMappingURL=main.css.map */
