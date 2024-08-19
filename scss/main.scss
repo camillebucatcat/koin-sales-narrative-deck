@@ -24,6 +24,7 @@ body {
   align-items: center;
   // transform: translateY(-60px);
   animation: fadeDown 1s linear 200ms 1;
+  width: 100%;
 }
 
 nav {
@@ -35,8 +36,8 @@ nav {
   position: absolute;
   display: flex;
   bottom: 30px;
-  max-width: 73.125rem;
-  gap: 1.125rem;
+  width: -webkit-fill-available;
+  // gap: 26px;
   justify-content: space-around;
   padding-left: 0;
   z-index: 10;
@@ -52,11 +53,35 @@ nav {
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 1s ease;
   opacity: 1;
   visibility: visible;
+  // box-shadow: -4px 6px 11px -3px rgba(0,0,0,0.15);
+  // -webkit-box-shadow: -4px 6px 11px -3px rgba(0,0,0,0.15);
+  // -moz-box-shadow: -4px 6px 11px -3px rgba(0,0,0,0.15);
+}
+.nav-item.moved {
+  transition: transform 1s ease;
 }
 
+.nav-item.returning {
+  animation: spin-slide-fade 1s ease;
+}
+
+@keyframes spin-slide-fade {
+  0% {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+  50% {
+    opacity: 0;
+    transform: rotate(180deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(360deg);
+  }
+}
 .nav-item a {
   text-decoration: none;
 }
