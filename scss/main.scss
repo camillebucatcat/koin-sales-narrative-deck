@@ -25,7 +25,8 @@ body {
   align-items: center;
   // transform: translateY(-60px);
   animation: fadeDown 1s linear 200ms 1;
-  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 nav {
