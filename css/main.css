@@ -34,7 +34,7 @@ nav {
   position: absolute;
   display: flex;
   bottom: 30px;
-  width: -webkit-fill-available;
+  width: 97%;
   justify-content: space-around;
   padding-left: 0;
   z-index: 10;
@@ -43,8 +43,8 @@ nav {
 .nav-item {
   list-style: none;
   background: #211F21;
-  width: 4.25rem;
-  height: 4.25rem;
+  width: 3.95rem;
+  height: 3.95rem;
   border-radius: 50%;
   justify-content: center;
   display: flex;
@@ -225,6 +225,24 @@ nav {
   font-weight: 600;
   border: none;
   text-decoration: none;
+}
+
+@media screen and (min-width: 1025px) {
+  #nav {
+    width: -webkit-fill-available;
+  }
+  .nav-item {
+    width: 4.25rem;
+    height: 4.25rem;
+  }
+}
+.nav-item img {
+  width: 88%;
+  margin: 0 auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=main.css.map */
