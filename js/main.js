@@ -6,21 +6,13 @@ $(document).ready(function () {
     let lastClickedButton = null;
     let videoPlaybackState = {}; // 1 for played, 0 for not played
 
-    // function checkVideosLoaded() {
-    //     videosLoaded++;
-    //     if (videosLoaded === videos.length) {
-    //         $('.preloader').addClass('hide');
-
-    //         setTimeout(() => {
-    //             $('.logo').addClass('visible');
-    //             $('#nav').addClass('visible');
-    //         }, 200);
-    //     }
-    // }
-
-    videos.each(function () {
-        var video = this;
-        // video.onloadeddata = checkVideosLoaded;
+    videos.on('loadeddata', function () {
+        if (++videosLoaded === videos.length) {
+            $('.preloader').addClass('hide');
+            setTimeout(() => {
+                $('.logo, #nav').addClass('visible');
+            }, 200);
+        }
     });
 
     $('.nav-item').click(function () {
